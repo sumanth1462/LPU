@@ -16,6 +16,10 @@
       }
       input[type="number"]{
         margin: 2px;
+        border:none;
+        border-bottom: 1px solid black;
+        background: rgba(0,0,0,0.1);
+        outline: none;
       }
       #span1{
         margin-left: 55px;
@@ -56,7 +60,7 @@
               </div>
               <div class="row">
                 <div class="col-md-4 md-offset-4">
-                  <div class="btn btn-success" onclick="check()">CHECK</div>
+                  <div class="btn btn-success" onclick="check()">Check</div>
                 </div>
               </div>
               
@@ -69,10 +73,18 @@
       function check(){
         var per=document.getElementById('Att_needed').value;
         var clss=document.getElementById('tot_classes').value;
-        var tclass=14*clss;
-        var c= Math.round((per/100)*tclass);
-        var tot=tclass-c;
-        document.getElementById("show").innerHTML=tot;
+        if(per<75|| per==""){
+          alert("* Min Attendance in each subject should be 75")
+        }
+        if(clss==0 || clss==" "){
+          alert("enter no of classes per week");
+        }
+        else{
+          var tclass=14*clss;
+          var c= Math.round((per/100)*tclass);
+          var tot=tclass-c;
+          document.getElementById("show").innerHTML=tot;
+        }
       }
       
     </script>
